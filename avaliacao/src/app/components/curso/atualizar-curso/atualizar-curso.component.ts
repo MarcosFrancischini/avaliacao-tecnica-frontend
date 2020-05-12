@@ -59,7 +59,7 @@ export class AtualizarCursoComponent implements OnInit {
 
   atualizarCurso(): void {
     this.cursoService.atualizarCurso(this.curso).subscribe(() => {
-      this.cursoService.mostrarMensagem('Produto atualizado com sucesso!');
+      this.cursoService.mostrarMensagem('Curso atualizado com sucesso!');
       this.router.navigate(['/cursos']);
     });
   }

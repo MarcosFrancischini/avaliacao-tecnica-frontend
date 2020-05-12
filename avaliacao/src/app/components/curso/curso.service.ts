@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpClient } from '@angular/common/http';
 import { Curso } from './curso.model';
-import { Observable } from 'rxjs';
+import { Observable, EMPTY } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,21 +17,28 @@ export class CursoService {
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
-  mostrarMensagem(mensagem: string): void {
+  mostrarMensagem(mensagem: string, isError: boolean = false): void {
     this.snackBar.open(mensagem, 'X',
     {
       duration: 3000,
       horizontalPosition: "right",
-      verticalPosition: "top"
+      verticalPosition: "top",
+      panelClass: isError ? ["msg-error"] : ["msg-success"]
     });
   }
 
   criarCurso(curso: Curso): Observable<Curso> {
-    return this.http.post<Curso>(this.urlBase, curso);
+    return this.http.post<Curso>(this.urlBase, curso).pipe(
+      map((obj) => obj),
+      catchError((e) => this.tratarErro(e))
+    );
   }
 
   retornarCursos(): Observable<Curso[]> {
-    return this.http.get<Curso[]>(this.urlCursos);
+    return this.http.get<Curso[]>(this.urlCursos).pipe(
+      map((obj) => obj),
+      catchError((e) => this.tratarErro(e))
+    );
   }
 
   retornarCategoriasCursos(): Observable<CategoriaCurso[]> {
@@ -39,17 +47,31 @@ export class CursoService {
 
   lerPorId(id: string): Observable<Curso> {
     const url = `${this.urlBase}/${id}`;
-    return this.http.get<Curso>(url);
+    return this.http.get<Curso>(url).pipe(
+      map((obj) => obj),
+      catchError((e) => this.tratarErro(e))
+    );
   }
 
   atualizarCurso(curso: Curso): Observable<Curso> {
     const url = `${this.urlBase}/${curso.id}`;
-    return this.http.patch<Curso>(url, curso);
+    return this.http.patch<Curso>(url, curso).pipe(
+      map((obj) => obj),
+      catchError((e) => this.tratarErro(e))
+    );
   }
 
   deletarCurso(id: number): Observable<Curso> {
     const url = `${this.urlBase}/${id}`;
-    return this.http.delete<Curso>(url);
+    return this.http.delete<Curso>(url).pipe(
+      map((obj) => obj),
+      catchError((e) => this.tratarErro(e))
+    );
+  }
+
+  tratarErro(e: any): Observable<any> {
+    this.mostrarMensagem("Ocorreu um erro!", true);
+    return EMPTY;
   }
 }
 
