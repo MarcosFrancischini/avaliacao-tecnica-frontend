@@ -46,5 +46,10 @@ export class CursoService {
     const url = `${this.urlBase}/${curso.id}`;
     return this.http.patch<Curso>(url, curso);
   }
+
+  deletarCurso(id: number): Observable<Curso> {
+    const url = `${this.urlBase}/${id}`;
+    return this.http.delete<Curso>(url);
+  }
 }
 

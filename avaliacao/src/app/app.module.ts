@@ -37,6 +37,7 @@ import { AtualizarCursoComponent } from './components/curso/atualizar-curso/atua
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { DeletarCursoComponent } from './components/curso/deletar-curso/deletar-curso.component';
 
 registerLocaleData(localePt);
 
@@ -50,7 +51,8 @@ registerLocaleData(localePt);
     CursosComponent,
     CriarCursoComponent,
     LerCursoComponent,
-    AtualizarCursoComponent
+    AtualizarCursoComponent,
+    DeletarCursoComponent
   ],
   imports: [
     BrowserModule,

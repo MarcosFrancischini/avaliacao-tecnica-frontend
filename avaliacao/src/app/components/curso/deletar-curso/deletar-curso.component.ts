@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Curso } from './../curso.model';
 import { CategoriaCurso } from './../categoria-curso.model';
-import { CursoService } from './../curso.service';
-import { Router, ActivatedRoute } from '@angular/router';
 import { formatDate } from '@angular/common';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CursoService } from './../curso.service';
+import { Curso } from './../curso.model';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-atualizar-curso',
-  templateUrl: './atualizar-curso.component.html',
-  styleUrls: ['./atualizar-curso.component.css']
+  selector: 'app-deletar-curso',
+  templateUrl: './deletar-curso.component.html',
+  styleUrls: ['./deletar-curso.component.css']
 })
-export class AtualizarCursoComponent implements OnInit {
+export class DeletarCursoComponent implements OnInit {
 
   curso: Curso;
 
@@ -57,9 +57,9 @@ export class AtualizarCursoComponent implements OnInit {
     return dataFormatada;
   }
 
-  atualizarCurso(): void {
-    this.cursoService.atualizarCurso(this.curso).subscribe(() => {
-      this.cursoService.mostrarMensagem('Produto atualizado com sucesso!');
+  deletarCurso(): void {
+    this.cursoService.deletarCurso(this.curso.id).subscribe(() => {
+      this.cursoService.mostrarMensagem('Curso deletado com sucesso!');
       this.router.navigate(['/cursos']);
     });
   }
@@ -67,4 +67,5 @@ export class AtualizarCursoComponent implements OnInit {
   cancelar(): void {
     this.router.navigate(['/cursos']);
   }
+
 }

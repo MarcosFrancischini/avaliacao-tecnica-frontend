@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-title>Deletar Curso</mat-card-title>
+  <div *ngIf="curso">
+    <form id="formDeletarCurso">
+      <mat-form-field>
+        <input matInput placeholder="Descrição" [value]="curso.descricao"
+          name="descricao" disabled="disabled"/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Categoria" [value]="curso.categoria"
+          [compareWith]="compararCategorias" name="categoria" disabled="disabled">
+          <mat-option *ngFor="let categoria of categorias" [value]="categoria">
+            {{ categoria.descricao }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="dataInicio" [value]="curso.dataInicio"
+          name="dataInicio" placeholder="Data de início" disabled="disabled">
+        <mat-datepicker-toggle matSuffix [for]="dataInicio"></mat-datepicker-toggle>
+        <mat-datepicker #dataInicio></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="dataTermino" [value]="curso.dataTermino"
+          name="dataTermino" placeholder="Data de término" disabled="disabled">
+        <mat-datepicker-toggle matSuffix [for]="dataTermino"></mat-datepicker-toggle>
+        <mat-datepicker #dataTermino></mat-datepicker>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <button type="submit" form="formDeletarCurso" mat-raised-button (click)="deletarCurso()"
+    color="warn">
+    Deletar
+  </button>
+
+  <button mat-raised-button (click)="cancelar()">
+    Cancelar
+  </button>
+</mat-card>

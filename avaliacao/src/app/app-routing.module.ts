@@ -1,3 +1,4 @@
+import { DeletarCursoComponent } from './components/curso/deletar-curso/deletar-curso.component';
 import { AtualizarCursoComponent } from './components/curso/atualizar-curso/atualizar-curso.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -10,7 +11,8 @@ const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "cursos", component: CursosComponent},
   {path: "cursos/criar", component: CriarCursoComponent},
-  {path: "cursos/atualizar/:id", component: AtualizarCursoComponent}
+  {path: "cursos/atualizar/:id", component: AtualizarCursoComponent},
+  {path: "cursos/deletar/:id", component: DeletarCursoComponent}
 ];
 
 @NgModule({
