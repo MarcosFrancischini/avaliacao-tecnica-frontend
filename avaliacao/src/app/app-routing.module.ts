@@ -1,3 +1,4 @@
+import { AtualizarCursoComponent } from './components/curso/atualizar-curso/atualizar-curso.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -8,7 +9,8 @@ import { CriarCursoComponent } from './components/curso/criar-curso/criar-curso.
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "cursos", component: CursosComponent},
-  {path: "cursos/criar", component: CriarCursoComponent}
+  {path: "cursos/criar", component: CriarCursoComponent},
+  {path: "cursos/atualizar/:id", component: AtualizarCursoComponent}
 ];
 
 @NgModule({

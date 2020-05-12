@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-title>Atualizar Curso</mat-card-title>
+  <div *ngIf="curso">
+    <form id="formAtualizarCurso">
+      <mat-form-field>
+        <input matInput placeholder="Descrição"
+          [(ngModel)]="curso.descricao" name="descricao" required="required"/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Categoria"
+          [(ngModel)]="curso.categoria" name="categoria" required="required">
+          <mat-option *ngFor="let categoria of categorias" [value]="categoria">
+            {{ categoria.descricao }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="dataInicio" [(ngModel)]="curso.dataInicio"
+          name="dataInicio" placeholder="Data de início" required="required">
+        <mat-datepicker-toggle matSuffix [for]="dataInicio"></mat-datepicker-toggle>
+        <mat-datepicker #dataInicio></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="dataTermino" [(ngModel)]="curso.dataTermino"
+          name="dataTermino" placeholder="Data de término" required="required">
+        <mat-datepicker-toggle matSuffix [for]="dataTermino"></mat-datepicker-toggle>
+        <mat-datepicker #dataTermino></mat-datepicker>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <button type="submit" form="formAtualizarCurso" mat-raised-button (click)="atualizarCurso()"
+    color="primary">
+    Salvar
+  </button>
+
+  <button mat-raised-button (click)="cancelar()">
+    Cancelar
+  </button>
+</mat-card>

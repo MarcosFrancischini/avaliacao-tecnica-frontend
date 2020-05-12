@@ -37,7 +37,7 @@ export class CursoService {
     return this.http.get<CategoriaCurso[]>(this.urlCategorias);
   }
 
-  lerPorId(id: number): Observable<Curso> {
+  lerPorId(id: string): Observable<Curso> {
     const url = `${this.urlBase}/${id}`;
     return this.http.get<Curso>(url);
   }

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +33,12 @@ import { LerCursoComponent } from './components/curso/ler-curso/ler-curso.compon
 import { MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule} from '@angular/material/sort';
+import { AtualizarCursoComponent } from './components/curso/atualizar-curso/atualizar-curso.component';
+
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -43,7 +49,8 @@ import { MatSortModule} from '@angular/material/sort';
     HomeComponent,
     CursosComponent,
     CriarCursoComponent,
-    LerCursoComponent
+    LerCursoComponent,
+    AtualizarCursoComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +74,10 @@ import { MatSortModule} from '@angular/material/sort';
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [],
+  providers: [{
+    provide: LOCALE_ID,
+    useValue: 'pt-BR'
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

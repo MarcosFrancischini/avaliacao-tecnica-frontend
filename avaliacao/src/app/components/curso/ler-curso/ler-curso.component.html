@@ -24,7 +24,7 @@
     <ng-container matColumnDef="acao">
       <mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <a routerLink="" class="edit">
+        <a routerLink="/cursos/atualizar/{{ row.id }}" class="edit">
           <i class="material-icons">
             edit
           </i>

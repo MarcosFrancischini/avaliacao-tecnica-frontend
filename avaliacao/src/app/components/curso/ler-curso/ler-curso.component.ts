@@ -22,7 +22,6 @@ export class LerCursoComponent implements OnInit {
     this.cursoService.retornarCursos().subscribe(
       dados => {
         this.cursos = dados;
-        console.log(this.cursos);
       }
     );
   }
