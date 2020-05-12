@@ -25,8 +25,6 @@ export class AtualizarCursoComponent implements OnInit {
   ngOnInit(): void {
     this.pegarDadosCurso();
     this.listarCategoriasCursos();
-    //console.log(this.curso);
-    //console.log(this.categorias);
   }
 
   pegarDadosCurso(): void {
@@ -47,6 +45,10 @@ export class AtualizarCursoComponent implements OnInit {
         this.categorias = dados;
       }
     );
+  }
+
+  compararCategorias(o1: CategoriaCurso, o2: CategoriaCurso): boolean {
+    return o1.id === o2.id;
   }
 
   private formatarData(data: Date): Date {

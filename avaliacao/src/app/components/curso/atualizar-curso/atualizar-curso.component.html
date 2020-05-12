@@ -7,8 +7,8 @@
           [(ngModel)]="curso.descricao" name="descricao" required="required"/>
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="Categoria"
-          [(ngModel)]="curso.categoria" name="categoria" required="required">
+        <mat-select placeholder="Categoria" [(ngModel)]="curso.categoria"
+          [compareWith]="compararCategorias" name="categoria" required="required">
           <mat-option *ngFor="let categoria of categorias" [value]="categoria">
             {{ categoria.descricao }}
           </mat-option>
