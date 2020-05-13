@@ -20,7 +20,7 @@ export class CursoService {
   mostrarMensagem(mensagem: string, isError: boolean = false): void {
     this.snackBar.open(mensagem, 'X',
     {
-      duration: 3000,
+      duration: 4000,
       horizontalPosition: "right",
       verticalPosition: "top",
       panelClass: isError ? ["msg-error"] : ["msg-success"]
@@ -73,7 +73,7 @@ export class CursoService {
     let erro: string = "Ocorreu um erro!";
 
     if(e.status == 406) {
-      erro = "Dados não enviados. Por favor, não utilize dados vazios.";
+      erro = "Ocorreu um erro ao salvar os dados.";
     }
     if(e.status == 412) {
       erro = "Existe(m) curso(s) planejados(s) dentro do período informado.";
