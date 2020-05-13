@@ -73,14 +73,13 @@ export class CursoService {
     let erro: string = "Ocorreu um erro!";
 
     if(e.status == 406) {
-      erro = "Por favor, não utilize dados vazios!";
+      erro = "Dados não enviados. Por favor, não utilize dados vazios.";
     }
     if(e.status == 412) {
-      erro = "Existe(m) curso(s) planejados(s) dentro do período informado!";
+      erro = "Existe(m) curso(s) planejados(s) dentro do período informado.";
     }
 
-    this.mostrarMensagem("Ocorreu um erro!", true);
-    console.log(e.status);
+    this.mostrarMensagem(erro, true);
     return EMPTY;
   }
 }
